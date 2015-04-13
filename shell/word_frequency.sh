@@ -1,0 +1,1 @@
+gawk 'BEGIN{RS="";ORS=""} {for(i=1;i<=NF;i++){words[$i]+=1;};for(v in words){print v" "words[v]"\n";}}' words.txt | sort -r -k2 -n
