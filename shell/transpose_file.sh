@@ -1,0 +1,1 @@
+gawk 'BEGIN{FS="\n";RS="";ORS=""} {lines[1]="";for(i=1;i<=NF;i++){count=split($i,var,/ /);for(j=1;j<=count;j++){lines[j]=lines[j]" "var[j];}}for(v in lines){print substr(lines[v],2)"\n";}}' file.txt
