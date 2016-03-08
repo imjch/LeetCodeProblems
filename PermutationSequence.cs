@@ -1,52 +1,26 @@
     public class Solution
     {
-        int count = 0;
-        
-        int max = 0;
-        readonly HashSet<int> set = new HashSet<int>();
-        void Swap(int i, int j, StringBuilder arr)
-        {
-            var t = arr[i];
-            arr[i] = arr[j];
-            arr[j] = t;
-        }
-
         public string GetPermutation(int n, int k)
         {
-
-            var arr = new StringBuilder();
-            for (var i = 0; i < n; i++)
+            var fac = new List<int>(n+1){1};
+            for (var i = 1; i <= n; i++)
             {
-                arr.Append(i + 1);
+                fac.Add(fac[i - 1] * i);
             }
-            count = k;
-            var s=string.Empty;
-            Permutation(ref s, 0, n, arr);
-            return s;
+            var numbers = new List<int>(n);
+            for (var i = 1; i <= n; i++)
+            {
+                numbers.Add(i);
+            }
+            var sb = new StringBuilder(n);
+            k--;
+            while (numbers.Count!=0)
+            {
+                var index = k / fac[numbers.Count - 1];
+                k = k % fac[numbers.Count - 1] ;
+                sb.Append(numbers[index]);
+                numbers.RemoveAt(index);
+            }
+            return sb.ToString();
         }
-
-        public void Permutation(ref string str, int begin, int end, StringBuilder arr)
-        {
-            if (begin > end||!string.IsNullOrEmpty(str))
-            {
-                return;
-            }
-            if (begin == end)
-            {
-                int t = Convert.ToInt32(arr.ToString());
-                max = t > max ? t : max;
-                if (--count == 0)
-                {
-                    str = max.ToString();
-                }
-            }
-            for (var i = begin; i < end; i++)
-            {
-                Swap(begin, i, arr);
-                Permutation(ref str, begin + 1, end, arr);
-                Swap(begin, i, arr);
-            }
-          
-        }
-
     }
