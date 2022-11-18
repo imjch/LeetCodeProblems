@@ -1,1 +1,6 @@
-a.out
+!*.go
+!*.cpp
+!*.cs
+!*.java
+!*.py
+!*.sh
