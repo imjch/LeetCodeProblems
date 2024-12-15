@@ -1,3 +1,10 @@
+package main
+
+import (
+	"strconv"
+	"strings"
+)
+
 func convertToBase7(num int) string {
 	res := []string{}
 	abs := false

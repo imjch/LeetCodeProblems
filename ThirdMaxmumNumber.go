@@ -1,3 +1,5 @@
+package main
+
 func thirdMax(nums []int) int {
 	max1, max2, max3 := -2147483649, -2147483649, -2147483649
 	for _, item := range nums {

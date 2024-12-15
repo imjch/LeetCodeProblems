@@ -1,3 +1,10 @@
+package main
+
+import (
+	"sort"
+	"strconv"
+)
+
 type Info struct {
 	Val int
 	Idx int

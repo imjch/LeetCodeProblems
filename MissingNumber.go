@@ -1,3 +1,5 @@
+package main
+
 func missingNumber(nums []int) int {
 	sum2 := 0
 	for _, item := range nums {
